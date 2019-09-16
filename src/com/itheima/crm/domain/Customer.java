@@ -1,5 +1,9 @@
 package com.itheima.crm.domain;
 
+import java.util.HashSet;
+import java.util.List;
+import java.util.Set;
+
 /**
  * `cust_id` bigint(32) NOT NULL AUTO_INCREMENT COMMENT '客户编号(主键)',
  *   `cust_name` varchar(32) NOT NULL COMMENT '客户名称(公司名称)',
@@ -25,6 +29,17 @@ public class Customer {
     private BaseDict baseDictSource;
     private BaseDict baseDictIndustry;
     private BaseDict baseDictLevel;
+
+    //一个客户有多个联系人
+    private Set<LinkMan> linkMans = new HashSet <>();
+
+    public Set <LinkMan> getLinkMans() {
+        return linkMans;
+    }
+
+    public void setLinkMans(Set <LinkMan> linkMans) {
+        this.linkMans = linkMans;
+    }
 
     public Long getCust_id() {
         return cust_id;

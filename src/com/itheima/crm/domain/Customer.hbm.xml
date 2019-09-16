@@ -18,5 +18,11 @@
 		<many-to-one name="baseDictSource" class="com.itheima.crm.domain.BaseDict" column="cust_source"/>
 		<many-to-one name="baseDictIndustry" class="com.itheima.crm.domain.BaseDict" column="cust_industry"/>
 		<many-to-one name="baseDictLevel" class="com.itheima.crm.domain.BaseDict" column="cust_level"/>
+
+		<!--配置与联系人的关系映射-->
+		<set name="linkMans">
+			<key column="lkm_cust_id"/>
+			<one-to-many class="com.itheima.crm.domain.LinkMan"/>
+		</set>
 	</class>
 </hibernate-mapping>

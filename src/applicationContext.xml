@@ -45,6 +45,7 @@
 				<value>com/itheima/crm/domain/User.hbm.xml</value>
 				<value>com/itheima/crm/domain/Customer.hbm.xml</value>
 				<value>com/itheima/crm/domain/BaseDict.hbm.xml</value>
+				<value>com/itheima/crm/domain/LinkMan.hbm.xml</value>
 			</list>
 		</property>
 	</bean>
