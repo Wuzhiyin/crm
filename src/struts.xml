@@ -31,7 +31,10 @@
 		<action name="baseDict_*" class="baseDictAction" method="{1}">
 
 		</action>
-
+		<!--联系人的Action的配置-->
+		<action name="linkMan_*" class="linkManAction" method="{1}">
+			<result name="findAll">/jsp/linkman/list.jsp</result>
+		</action>
 
 	</package>
 
