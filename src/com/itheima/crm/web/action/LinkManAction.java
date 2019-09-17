@@ -9,6 +9,7 @@ import com.opensymphony.xwork2.ActionContext;
 import com.opensymphony.xwork2.ActionSupport;
 import com.opensymphony.xwork2.ModelDriven;
 import org.hibernate.criterion.DetachedCriteria;
+import org.hibernate.criterion.Restrictions;
 
 import java.util.List;
 
@@ -60,6 +61,16 @@ public class LinkManAction extends ActionSupport implements ModelDriven<LinkMan>
         //创建离线条件查询:
         DetachedCriteria detachedCriteria = DetachedCriteria.forClass(LinkMan.class);
         //设置条件
+        if (linkMan.getLkm_name()!=null){
+            //设置名称查询的条件
+            detachedCriteria.add(Restrictions.like("lkm_name","%"+linkMan.getLkm_name()+"%"));
+
+        }
+        //设置性别条件
+        if (linkMan.getLkm_gender()!=null && !"".equals(linkMan.getLkm_gender())){
+            //设置按名称查询的条件
+            detachedCriteria.add(Restrictions.eq("lkm_gender",linkMan.getLkm_gender()));
+        }
         //调用业务层
         PageBean<LinkMan> pageBean =  linkManService.findAll(detachedCriteria,currPage,pageSize);
         ActionContext.getContext().getValueStack().push(pageBean);
@@ -99,5 +110,28 @@ public class LinkManAction extends ActionSupport implements ModelDriven<LinkMan>
         //将对象的值存入到值栈
         ActionContext.getContext().getValueStack().push(linkMan);
         return "editSuccess";
+    }
+
+    /**
+     * 修改联系人的方法:update
+     * @return
+     */
+    public String update(){
+        //调用业务层
+        linkManService.update(linkMan);
+        return "updateSuccess";
+    }
+
+    /**
+     * 删除联系人的方法:删除
+     * @return
+     */
+    public String delete(){
+        //调用业务层
+        linkMan = linkManService.findById(linkMan.getLkm_id());
+        //删除联系人
+        linkManService.delete(linkMan);
+        //页面跳转
+        return "deleteSuccess";
     }
 }

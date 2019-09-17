@@ -67,4 +67,22 @@ public class LinkManServiceImpl implements LinkManService {
     public LinkMan findById(Long lkm_id) {
         return linkManDao.findById(lkm_id);
     }
+
+    /**
+     * 业务层修改联系人的方法
+     * @param linkMan
+     */
+    @Override
+    public void update(LinkMan linkMan) {
+        linkManDao.update(linkMan);
+    }
+
+    /**
+     * 业务层中删除联系人的方法
+     * @param linkMan
+     */
+    @Override
+    public void delete(LinkMan linkMan) {
+        linkManDao.delete(linkMan);
+    }
 }

@@ -14,8 +14,9 @@
 	<META content="MSHTML 6.00.2900.3492" name=GENERATOR>
 </HEAD>
 <BODY>
+
 <s:form id="form1" name="form1" action="linkMan_update" namespace="/" method="POST" theme="simple">
-<s:hidden name="lkm_id" value="lkm_id"/>
+<s:hidden name="lkm_id" value="%{lkm_id}"/>
 
 
 	<TABLE cellSpacing=0 cellPadding=0 width="98%" border=0>

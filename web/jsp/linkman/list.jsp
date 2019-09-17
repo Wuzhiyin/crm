@@ -9,7 +9,7 @@
 <LINK href="${pageContext.request.contextPath }/css/Style.css" type=text/css rel=stylesheet>
 <LINK href="${pageContext.request.contextPath }/css/Manage.css" type=text/css
 	rel=stylesheet>
-<script type="text/javascript" src="${pageContext.request.contextPath }/js/jquery-1.4.4.min.js"></script>
+<script type="text/javascript" src="${pageContext.request.contextPath }/js/jquery-1.11.3.min.js"></script>
 <SCRIPT language=javascript>
 	function to_page(page){
 		if(page){
@@ -23,9 +23,8 @@
 <META content="MSHTML 6.00.2900.3492" name=GENERATOR>
 </HEAD>
 <BODY>
-	<FORM id="customerForm" name="customerForm"
-		action="${pageContext.request.contextPath }/linkMan_findAll.action"
-		method=post>
+<s:form id="customerForm" name="customerForm" action="linkMan_findAll" namespace="/" method="post" theme="simple">
+
 		
 		<TABLE cellSpacing=0 cellPadding=0 width="98%" border=0>
 			<TBODY>
@@ -62,9 +61,15 @@
 											<TBODY>
 												<TR>
 													<TD>联系人名称：</TD>
-													<TD><INPUT class=textbox id=sChannel2
-														style="WIDTH: 80px" maxLength=50 name="lkmName"></TD>
-													
+													<TD>
+														<s:textfield name="lkm_name" cssClass="textbox" id="sChannel2" cssStyle="WIDTH: 80px" maxLength="50"/>
+
+													</TD>
+													<TD>联系人性别：</TD>
+													<TD>
+														<s:select name="lkm_gender" list="#{'1':'男','2':'女'}" headerKey="" headerValue="-请选择-" ></s:select>
+
+													</TD>
 													<TD><INPUT class=button id=sButton2 type=submit
 														value=" 筛选 " name=sButton2></TD>
 												</TR>
@@ -108,7 +113,7 @@
 													<TD>
 													<a href="${pageContext.request.contextPath }/linkMan_edit.action?lkm_id=<s:property value="lkm_id"/>">修改</a>
 													&nbsp;&nbsp;
-													<a href="${pageContext.request.contextPath }/">删除</a>
+													<a href="${pageContext.request.contextPath }/linkMan_delete.action?lkm_id=<s:property value="lkm_id"/>">删除</a>
 													</TD>
 												</TR>
 
@@ -151,7 +156,7 @@
 												[<A href="javascript:to_page(<s:property value="totalPage"/>)">尾页</A>]
 </s:if>
 												到
-												<input type="text" size="3" id="page" name="page" />
+												<input type="text" size="3" id="page" name="currPage" />
 												页
 												
 												<input type="button" value="Go" onclick="to_page()"/>
@@ -178,6 +183,6 @@
 				</TR>
 			</TBODY>
 		</TABLE>
-	</FORM>
+		</s:form>
 </BODY>
 </HTML>
