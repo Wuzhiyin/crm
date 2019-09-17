@@ -95,7 +95,9 @@
 												<TR
 													style="FONT-WEIGHT: normal; FONT-STYLE: normal; BACKGROUND-COLOR: white; TEXT-DECORATION: none">
 													<TD><s:property value="lkm_name"/></TD>
-													<TD><s:property value="lkm_gender"/></TD>
+													<TD><s:if test='lkm_gender=="1"'>男</s:if>
+                                                        <s:elseif test='lkm_gender=="2"'>女</s:elseif>
+                                                       </TD>
 													<TD><s:property value="lkm_phone"/></TD>
 													<TD><s:property value="lkm_mobile"/></TD>
 													<TD><s:property value="lkm_email"/></TD>
@@ -104,7 +106,7 @@
 													<TD><s:property value="customer.cust_name"/></TD>
 
 													<TD>
-													<a href="${pageContext.request.contextPath }/">修改</a>
+													<a href="${pageContext.request.contextPath }/linkMan_edit.action?lkm_id=<s:property value="lkm_id"/>">修改</a>
 													&nbsp;&nbsp;
 													<a href="${pageContext.request.contextPath }/">删除</a>
 													</TD>

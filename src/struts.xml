@@ -34,6 +34,9 @@
 		<!--联系人的Action的配置-->
 		<action name="linkMan_*" class="linkManAction" method="{1}">
 			<result name="findAll">/jsp/linkman/list.jsp</result>
+			<result name="saveUI">/jsp/linkman/add.jsp</result>
+			<result name="saveSuccess" type="redirectAction">linkMan_findAll.action</result>
+			<result name="editSuccess">/jsp/linkman/edit.jsp</result>
 		</action>
 
 	</package>
