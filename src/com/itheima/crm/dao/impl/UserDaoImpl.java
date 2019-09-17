@@ -6,13 +6,8 @@ import org.springframework.orm.hibernate5.support.HibernateDaoSupport;
 
 import java.util.List;
 
-public class UserDaoImpl extends HibernateDaoSupport implements UserDao {
-    //DAO中保存用户的方法
-    @Override
-    public void save(User user) {
-        System.out.println("user" + user);
-        this.getHibernateTemplate().save(user);
-    }
+public class UserDaoImpl extends BaseDaoImpl<User> implements UserDao {
+
 
     /**
      * DAO中根据用户名和密码进行查询的方法

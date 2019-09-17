@@ -9,16 +9,6 @@ import java.util.List;
  * 联系人的DAO的接口
  *
  */
-public interface LinkManDao {
-    Integer findCount(DetachedCriteria detachedCriteria);
+public interface LinkManDao extends BaseDao<LinkMan>{
 
-    List<LinkMan> findByPage(DetachedCriteria detachedCriteria, Integer begin, Integer pageSize);
-
-    void save(LinkMan linkMan);
-
-    LinkMan findById(Long lkm_id);
-
-    void update(LinkMan linkMan);
-
-    void delete(LinkMan linkMan);
 }
