@@ -42,6 +42,11 @@
 
 		</action>
 
+		<!--客户拜访记录的Action的配置-->
+		<action name="saleVisit_*" class="saleVisitAction" method="{1}">
+			<result name="findAll">/jsp/salevisit/list.jsp</result>
+			<result name="saveUI">/jsp/salevisit/add.jsp</result>
+		</action>
 	</package>
 
 </struts>

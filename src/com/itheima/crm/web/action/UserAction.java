@@ -5,6 +5,11 @@ import com.itheima.crm.service.UserService;
 import com.opensymphony.xwork2.ActionContext;
 import com.opensymphony.xwork2.ActionSupport;
 import com.opensymphony.xwork2.ModelDriven;
+import net.sf.json.JSONArray;
+import org.apache.struts2.ServletActionContext;
+
+import java.io.IOException;
+import java.util.List;
 
 public class UserAction extends ActionSupport implements ModelDriven<User> {
     private User user = new User();
@@ -42,5 +47,12 @@ public class UserAction extends ActionSupport implements ModelDriven<User> {
             ActionContext.getContext().getSession().put("existUser",existUser);
             return SUCCESS;
         }
+    }
+    public String findAllUser() throws IOException {
+        List<User> list = userService.findAll();
+        JSONArray jsonArray = JSONArray.fromObject(list);
+        ServletActionContext.getResponse().setContentType("text/html;charset=UTF-8");
+        ServletActionContext.getResponse().getWriter().println(jsonArray.toString());
+        return NONE;
     }
 }

@@ -12,7 +12,10 @@
 	http://www.springframework.org/schema/aop/spring-aop.xsd
 	http://www.springframework.org/schema/tx 
 	http://www.springframework.org/schema/tx/spring-tx.xsd">
-	
+
+	<!--开启属性注入的注解-->
+	<context:annotation-config></context:annotation-config>
+
 	<!-- 引入外部属性文件=============================== -->
 	<context:property-placeholder location="classpath:jdbc.properties"/>
 	
@@ -100,6 +103,17 @@
 		<property name="linkManDao" ref="linkManDao"/>
 	</bean>
 	<bean id="linkManDao" class="com.itheima.crm.dao.impl.LinkManDaoImpl">
+		<property name="sessionFactory" ref="sessionFactory"/>
+	</bean>
+
+	<!--配置客户拜访记录管理相关类========-->
+	<bean id="saleVisitAction" class="com.itheima.crm.web.action.SaleVisitAction" scope="prototype">
+
+	</bean>
+	<bean id="saleVisitService" class="com.itheima.crm.service.impl.SaleVisitServiceImpl">
+
+	</bean>
+	<bean id="saleVisitDao" class="com.itheima.crm.dao.impl.SaleVisitDaoImpl">
 		<property name="sessionFactory" ref="sessionFactory"/>
 	</bean>
 	<!-- 配置事务管理器 -->

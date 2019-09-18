@@ -60,7 +60,7 @@ public class BaseDaoImpl<T> extends HibernateDaoSupport implements BaseDao<T> {
     //查询所有的方法
     @Override
     public List<T> findAll() {
-        return (List<T>)this.getHibernateTemplate().find("from" + clazz.getSimpleName());
+        return (List<T>)this.getHibernateTemplate().find("from " + clazz.getSimpleName());
     }
 
     /**

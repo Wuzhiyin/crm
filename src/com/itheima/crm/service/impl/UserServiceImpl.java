@@ -5,6 +5,9 @@ import com.itheima.crm.domain.User;
 import com.itheima.crm.service.UserService;
 import com.itheima.crm.utils.MD5Utils;
 import org.springframework.transaction.annotation.Transactional;
+
+import java.util.List;
+
 @Transactional
 public class UserServiceImpl implements UserService {
     // 注入DAO
@@ -36,4 +39,8 @@ public class UserServiceImpl implements UserService {
         return userDao.login(user);
     }
 
+    @Override
+    public List<User> findAll() {
+        return userDao.findAll();
+    }
 }
