@@ -9,11 +9,24 @@
 	<constant name="struts.multipart.maxSize" value="5242880"/>
 	<!-- 配置Action -->
 	<package name="crm" extends="struts-default" namespace="/">
+
+		<interceptors>
+			<interceptor name="privilegeInterceptor" class="com.itheima.crm.web.interceptor.PrivilegeInterceptor" />
+		</interceptors>
+
+		<global-results>
+			<result name="login">/login.jsp</result>
+		</global-results>
+
 		<action name="user_*" class="userAction" method="{1}">
 			<result name="login">/login.jsp</result>
 			<result name="success" type="redirect">/index.jsp</result>
+			<interceptor-ref name="privilegeInterceptor">
+				<param name="excludeMethods">regist,login</param>
+			</interceptor-ref>
+			<interceptor-ref name="defaultStack"/>
 		</action>
-
+		<!--配置客户管理的Action-->
 		<action name="customer_*" class="customerAction" method="{1}">
 			<result name="saveUI">/jsp/customer/add.jsp</result>
             <result name="findAll">/jsp/customer/list.jsp</result>
@@ -21,11 +34,13 @@
 			<result name="saveSuccess" type="redirectAction">customer_findAll.action</result>
 			<result name="updateSuccess" type="redirectAction">customer_findAll.action</result>
 			<result name="input">/jsp/customer/add.jsp</result>
+			<interceptor-ref name="privilegeInterceptor">
+			</interceptor-ref>
+
 			<interceptor-ref name="defaultStack">
 				<param name="fileUpload.maximumSize">2097152</param>
 				<param name="fileUpload.allowedExtensions">.jpg</param>
 			</interceptor-ref>
-
 		</action>
 
 		<action name="baseDict_*" class="baseDictAction" method="{1}">
@@ -39,13 +54,20 @@
 			<result name="editSuccess">/jsp/linkman/edit.jsp</result>
 			<result name="updateSuccess" type="redirectAction">linkMan_findAll.action</result>
 			<result name="deleteSuccess" type="redirectAction">linkMan_findAll.action</result>
-
+			<result name="input">/jsp/linkman/add.jsp</result>
+			<interceptor-ref name="privilegeInterceptor">
+			</interceptor-ref>
+			<interceptor-ref name="defaultStack"/>
 		</action>
 
 		<!--客户拜访记录的Action的配置-->
 		<action name="saleVisit_*" class="saleVisitAction" method="{1}">
 			<result name="findAll">/jsp/salevisit/list.jsp</result>
 			<result name="saveUI">/jsp/salevisit/add.jsp</result>
+			<result name="saveSuccess" type="redirectAction">saleVisit_findAll.action</result>
+			<interceptor-ref name="privilegeInterceptor">
+			</interceptor-ref>
+			<interceptor-ref name="defaultStack"/>
 		</action>
 	</package>
 

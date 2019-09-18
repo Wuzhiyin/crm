@@ -19,7 +19,17 @@
 		
 	}
 </SCRIPT>
-
+	<!-- 日期插件，使用jquery -->
+	<script type="text/javascript" src="${pageContext.request.contextPath }/jquery/jquery-1.4.2.js"></script>
+	<link rel="stylesheet" href="${pageContext.request.contextPath }/jquery/jquery.datepick.css" type="text/css">
+	<script type="text/javascript" src="${pageContext.request.contextPath }/jquery/jquery.datepick.js"></script>
+	<script type="text/javascript" src="${pageContext.request.contextPath }/jquery/jquery.datepick-zh-CN.js"></script>
+	<script type="text/javascript">
+        $(function () {
+            $('#visit_time').datepick({dateFormat:'yy-mm-dd'});
+            $('#visit_end_time').datepick({dateFormat:'yy-mm-dd'});
+        })
+	</script>
 <META content="MSHTML 6.00.2900.3492" name=GENERATOR>
 </HEAD>
 <BODY>
@@ -60,16 +70,15 @@
 										<TABLE cellSpacing=0 cellPadding=2 border=0>
 											<TBODY>
 												<TR>
-													<TD>业务员名称：</TD>
+													<TD>拜访时间：从</TD>
 													<TD>
-														<s:textfield name="customer.cust_name" cssClass="textbox" id="sChannel2" cssStyle="WIDTH: 80px" maxLength="50"/>
-
+														<input type="text" id="visit_time" name="visit_time" readonly="readonly" value="<s:date name="visit_time" format="yyyy-MM-dd"/>" />
 													</TD>
-													<TD>联系人性别：</TD>
+													<TD>到</TD>
 													<TD>
-														<s:select name="lkm_gender" list="#{'1':'男','2':'女'}" headerKey="" headerValue="-请选择-" ></s:select>
-
+														<input type="text" id="visit_end_time" name="visit_end_time" readonly="readonly" value="<s:date name="visit_end_time" format="yyyy-MM-dd"/>" />
 													</TD>
+
 													<TD><INPUT class=button id=sButton2 type=submit
 														value=" 筛选 " name=sButton2></TD>
 												</TR>
@@ -80,7 +89,7 @@
 							    
 								<TR>
 									<TD>
-										<TABLE id=grid
+										<TABLE id="grid"
 											style="BORDER-TOP-WIDTH: 0px; FONT-WEIGHT: normal; BORDER-LEFT-WIDTH: 0px; BORDER-LEFT-COLOR: #cccccc; BORDER-BOTTOM-WIDTH: 0px; BORDER-BOTTOM-COLOR: #cccccc; WIDTH: 100%; BORDER-TOP-COLOR: #cccccc; FONT-STYLE: normal; BACKGROUND-COLOR: #cccccc; BORDER-RIGHT-WIDTH: 0px; TEXT-DECORATION: none; BORDER-RIGHT-COLOR: #cccccc"
 											cellSpacing=1 cellPadding=2 rules=all border=0>
 											<TBODY>

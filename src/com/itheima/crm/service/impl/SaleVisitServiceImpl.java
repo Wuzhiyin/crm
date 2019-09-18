@@ -6,6 +6,7 @@ import com.itheima.crm.domain.SaleVisit;
 import com.itheima.crm.service.SaleVisitService;
 import com.opensymphony.xwork2.ActionContext;
 import org.hibernate.criterion.DetachedCriteria;
+import org.springframework.transaction.annotation.Transactional;
 
 import javax.annotation.Resource;
 import java.util.List;
@@ -13,6 +14,7 @@ import java.util.List;
 /**
  * 客户拜访记录的业务层的实现类
  */
+@Transactional
 public class SaleVisitServiceImpl implements SaleVisitService {
     @Resource(name = "saleVisitDao")
     private SaleVisitDao saleVisitDao;
@@ -48,5 +50,11 @@ public class SaleVisitServiceImpl implements SaleVisitService {
         //存入到值栈
         ActionContext.getContext().getValueStack().push(pageBean);
         return pageBean;
+    }
+
+
+    @Override
+    public void save(SaleVisit saleVisit) {
+        saleVisitDao.save(saleVisit);
     }
 }

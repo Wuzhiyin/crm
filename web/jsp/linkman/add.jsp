@@ -14,9 +14,9 @@
 <META content="MSHTML 6.00.2900.3492" name=GENERATOR>
 </HEAD>
 <BODY>
+<s:actionerror/>
+<s:fielderror/>
 <s:form id="form1" name="form1" action="linkMan_save" namespace="/" method="POST" theme="simple">
-
-		
 
 		<TABLE cellSpacing=0 cellPadding=0 width="98%" border=0>
 			<TBODY>
